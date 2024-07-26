@@ -5,7 +5,7 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
+@app.route("/", strict_slashes=False)
 def say_hello():
     """Displays message"""
     return "Hello HBNB!"
@@ -23,7 +23,7 @@ def c_is_fun(text):
     return "C {}".format(text.replace("_", " "))
 
 
-@app.route("/python/", defaults={"text":"is cool"}, strict_slashes=False)
+@app.route("/python/", defaults={"text": "is cool"}, strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
 def python_is_cool(text):
     """route with dynamic parameter with a default"""
@@ -31,5 +31,4 @@ def python_is_cool(text):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
-
+    app.run(host="0.0.0.0", port=5000)
