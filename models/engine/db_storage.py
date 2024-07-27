@@ -53,7 +53,9 @@ class DBStorage:
     def delete(self, obj=None):
         """delete from the current database session obj if not None"""
         if obj:
-            self.__session.delete(obj)
+            cls_name = type(obj).__name__
+            obj = self.__session.query(cls_name).filter(cls_name.id == obj.id)
+            obj.delete()
 
     def reload(self):
         """create all tables in the database and create the current database session"""
