@@ -51,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
         """
         _cmd = _cls = _id = _args = ""  # initialize line elements
 
-        # scan for general formating - i.e '.', '(', ')'
+        # scan for general formatting - i.e '.', '(', ')'
         if not ("." in line and "(" in line and ")" in line):
             return line
 
@@ -66,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
             if _cmd not in HBNBCommand.dot_cmds:
                 raise Exception
 
-            # if parantheses contain arguments, parse them
+            # if parentheses contain arguments, parse them
             pline = pline[pline.find("(") + 1 : pline.find(")")]
             if pline:
                 # partition args: (<id>, [<delim>], [<*args>])
@@ -176,8 +176,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         key = c_name + "." + c_id
-        cls = HBNBCommand.classes[c_name]
-        objs = storage.all(cls)
+        objs = storage.all(c_name)
         try:
             print(objs[key])
         except KeyError:
@@ -209,9 +208,8 @@ class HBNBCommand(cmd.Cmd):
             return
 
         key = c_name + "." + c_id
-
         try:
-            del storage.all()[key]
+            obj = storage.all(c_name)
             storage.save()
         except KeyError:
             print("** no instance found **")
@@ -230,7 +228,7 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            all_obj = storage.all()
+            all_obj = storage.all(args)
             for k, v in all_obj.items():
                 if k.split(".")[0] == args:
                     print_list.append(str(v))
@@ -282,9 +280,8 @@ class HBNBCommand(cmd.Cmd):
 
         # generate key from class and id
         key = c_name + "." + c_id
-
         # determine if key is present
-        if key not in storage.all():
+        if key not in storage.all(c_name):
             print("** no instance found **")
             return
 
@@ -318,7 +315,7 @@ class HBNBCommand(cmd.Cmd):
             args = [att_name, att_val]
 
         # retrieve dictionary of current objects
-        new_dict = storage.all()[key]
+        new_dict = storage.all(c_name)[key]
 
         # iterate through attr names and values
         for i, att_name in enumerate(args):

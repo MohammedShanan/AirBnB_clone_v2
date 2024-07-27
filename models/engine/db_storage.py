@@ -36,6 +36,8 @@ class DBStorage:
         objs = []
         classes = [State, City, User, Place, Review, Amenity]
         if cls:
+            if isinstance(cls, str):
+                cls = eval(cls)
             objs = self.__session.query(cls).all()
         else:
             for cls in classes:
