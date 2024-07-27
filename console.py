@@ -130,7 +130,6 @@ class HBNBCommand(cmd.Cmd):
             match = match.split()
             for i,v in enumerate(match):
                 match[i] = v.replace("=", ":")
-            print(match)
             _dict = self.__create_dict(match)
             new_instance = HBNBCommand.classes[args[0]](**_dict)
         else:
