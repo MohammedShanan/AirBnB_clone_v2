@@ -73,4 +73,3 @@ class FileStorage:
         if obj is not None:
             key = "{}.{}".format(obj.to_dict()["__class__"], obj.id)
             del FileStorage.__objects[key]
-            self.save()
