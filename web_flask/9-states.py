@@ -15,7 +15,14 @@ def states_list(id=None):
     """Render template with states"""
     path = "9-states.html"
     states = storage.all(State)
-    return render_template(path, states=states, id=id)
+    the_state = None
+    if id:
+        for state in states.values():
+            if state.id == id:
+                the_state = state
+    if the_state:
+        states = None
+    return render_template(path, states=states, state=the_state)
 
 
 @app.teardown_appcontext
