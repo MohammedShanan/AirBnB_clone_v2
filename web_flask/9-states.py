@@ -20,8 +20,8 @@ def states_list(id=None):
         for state in states.values():
             if state.id == id:
                 the_state = state
-    if the_state:
-        states = None
+                return render_template(path, states=None, state=the_state)
+        return render_template(path, states=None, state=None)
     return render_template(path, states=states, state=the_state)
 
 
