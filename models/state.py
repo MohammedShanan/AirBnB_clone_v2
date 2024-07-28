@@ -17,6 +17,7 @@ class State(BaseModel, Base):
 
         @property
         def cities(self):
+            """returns all cities associated with the State"""
             from models import storage
 
             all_cities = storage.all(City)
