@@ -7,9 +7,9 @@
     {% if id == None %}
     <h1>States</h1>
     <ul>
-      {% if states %} {% for state in states.values()|sort(attribute='name') %}
-      <li>{{state['id']}}: <b>{{state['name']}}</b></li>
-      {% endfor %} {% endif %}
+      {% for state in states.values()|sort(attribute='name') %}
+      <li>{{ state.id }}: <b>{{ state.name }}</b></li>
+      {% endfor %}
     </ul>
     {% elif states.get('DeclarativeMeta.' + id) %}
     <h1>State: {{ states['DeclarativeMeta.' + id].name }}</h1>
