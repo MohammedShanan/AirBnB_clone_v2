@@ -21,6 +21,7 @@ class DBStorage:
     __session = None
 
     def __init__(self):
+        """create the  engine"""
         user = getenv("HBNB_MYSQL_USER")
         password = getenv("HBNB_MYSQL_PWD")
         host = getenv("HBNB_MYSQL_HOST")
@@ -33,6 +34,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
+        """Query the database and return a dictionary"""
         objs = []
         classes = [State, City, User, Place, Review, Amenity]
         if cls:
