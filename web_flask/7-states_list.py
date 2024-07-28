@@ -8,7 +8,7 @@ from models.state import State
 app = Flask(__name__)
 
 
-@app.route("/", strict_slashes=False)
+@app.route("/states_list", strict_slashes=False)
 def state_list():
     """Render template with states"""
     all_states = storage.all(State)
