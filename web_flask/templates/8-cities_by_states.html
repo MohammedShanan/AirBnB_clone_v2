@@ -11,7 +11,7 @@
         {{state['id']}}: <b>{{state['name']}}</b>
         <ul>
           {% if state.cities %} {% for city in
-          state.cities.values()|sort(attribute='name')%}
+          state.cities|sort(attribute='name')%}
           <li>city.id: <b>city.name</b></li>
           {% endfor %} {% endif %}
         </ul>
