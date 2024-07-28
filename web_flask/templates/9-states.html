@@ -11,13 +11,13 @@
       <li>{{state['id']}}: <b>{{state['name']}}</b></li>
       {% endfor %} {% endif %}
     </ul>
-    {% elif states['DeclarativeMeta.' + id] %}
-    <h1>State: states['DeclarativeMeta.' + id].name</h1>
+    {% elif states.get('DeclarativeMeta.' + id) %}
+    <h1>State: {{ states['DeclarativeMeta.' + id].name }}</h1>
     <h3>Cities:</h3>
     <ul>
       {% for city in states['DeclarativeMeta.' +
-      id].cities|sort(attribute='name')%}
-      <li>{{city.id}}: <b>{{city.name}}</b></li>
+      id].cities|sort(attribute='name') %}
+      <li>{{ city.id }}: <b>{{ city.name }}</b></li>
       {% endfor %}
     </ul>
     {% else %}
