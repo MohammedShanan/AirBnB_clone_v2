@@ -16,7 +16,7 @@ def state_list():
 
 
 @app.route("/states/<id>", strict_slashes=False)
-def state_list(id):
+def state(id):
     """Render template with states"""
     all_states = storage.all(State)
     return render_template("9-states.html", states=all_states, id=id)
