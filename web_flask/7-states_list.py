@@ -12,10 +12,7 @@ app = Flask(__name__)
 def state_list():
     """Render template with states"""
     all_states = storage.all(State)
-    states = {}
-    for state in all_states.values():
-        states[state.id] = state.name
-    return render_template("7-states_list.html", states=states)
+    return render_template("7-states_list.html", states=all_states)
 
 
 @app.teardown_appcontext
