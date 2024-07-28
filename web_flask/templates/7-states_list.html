@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>States</H1>
+        <UL>
+            {% for state in states|dictsort(False, 'value')%}
+            <li>{{state[0]}}: <b>{{state[1]}}</b></li>
+            {% endfor %}
+        </UL>
+    </BODY>
+</HTML>
