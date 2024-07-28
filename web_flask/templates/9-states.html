@@ -18,6 +18,7 @@
       {% for city in states['DeclarativeMeta.' +
       id].cities|sort(attribute='name')%}
       <li>{{city.id}}: <b>{{city.name}}</b></li>
+      {% endfor %}
     </ul>
     {% else %}
     <h1>Not found!</h1>
