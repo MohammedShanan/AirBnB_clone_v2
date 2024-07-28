@@ -59,14 +59,15 @@ class DBStorage:
         if obj:
             cls_name = type(obj).__name__
             cls_name = eval(cls_name)
-            obj = self.__session.query(cls_name).filter(cls_name.id == obj.id).first()
-            self.__session.delete(obj)
+            obj = self.__session.query(cls_name).filter(cls_name.id == obj.id)
+            self.__session.delete(obj.first())
 
     def reload(self):
-        """create all tables in the database and create the current database session"""
+        """create all tables in the database and create
+        the current database session"""
         Base.metadata.create_all(self.__engine)
-        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(session_factory)
+        session = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(session)
         self.__session = Session()
 
     def close(self):
