@@ -19,6 +19,7 @@ def state_list():
 def state(id):
     """Render template with states"""
     all_states = storage.all(State)
+    print(id)
     return render_template("9-states.html", states=all_states, id=id)
 
 
